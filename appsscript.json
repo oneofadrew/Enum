@@ -1,0 +1,15 @@
+{
+  "timeZone": "Europe/London",
+  "dependencies": {
+    "libraries": [
+      {
+        "userSymbol": "Test",
+        "version": "3",
+        "libraryId": "1TMw5iSpWrUBgGH40oGlHDIchcyjeUwLZWaoO2F8YWhPBVZS-5TCBnqmj",
+        "developmentMode": false
+      }
+    ]
+  },
+  "exceptionLogging": "STACKDRIVER",
+  "runtimeVersion": "V8"
+}
