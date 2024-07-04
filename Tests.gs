@@ -1,3 +1,15 @@
+//---------------------------------------------------------------------------------------
+// Copyright ⓒ 2024 Drew Harding
+// All rights reserved.
+//---------------------------------------------------------------------------------------
+// Unit tests for the Enum library. These should be run along with every change to the
+// library to verify nothing has broken.
+//
+// Before deployment this script should be deleted and the Test library removed from the
+// dependency list. After deployment it should be reinstated in the app script project
+// from version control.
+//---------------------------------------------------------------------------------------
+
 //enum test data
 const name = "test"
 const [key1, key2, key3] = ["key1", "key2", "key3"];
@@ -22,7 +34,7 @@ const tupleRecords = [tuple1, tuple2, tuple3];
 const propertyRecords = [recordA, recordB, recordC];
 const properties = [key, prop1, prop2, prop3];
 
-function runTests() {
+function runTests_() {
   let suite = getEnumSuite_();
   suite.run();
 }
