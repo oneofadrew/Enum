@@ -14,10 +14,10 @@
  * The Enum class. It provides an immutable encapsulation of a dataset in one of simple, tuple or complex object form.
  */
 class Enum {
-  constructor(name, records=[], properties=[]) {
+  constructor(name, records=[], properties=[], safe) {
     //validations
     if (!name) throw new Error("An enum must have a name");
-    if (!records || records.length === 0) throw new Error(`The enum ${name} must have some records`);
+    if (safe && (!records || records.length === 0)) throw new Error(`The enum ${name} must have some records`);
     for (let record of records) {
       if (record.length === 0) throw new Error(`Each record in enum ${name} must have a key`);
       if (properties.length > 0 && record.length < properties.length)  throw new Error(`Each property in enum ${name} must have a value`);
@@ -81,11 +81,11 @@ class Enum {
  * @param {[[string]]} dataset - a two dimnensional array of the data for the enum, where the first row contains the properties.
  * @return {Enum} An Enum object that encapsulates the data provided
  */
-function getEnumWithHeader(name, dataset) {
+function getEnumWithHeader(name, dataset, safe=true) {
   if (dataset.length < 2) throw new Error(`The dataset for enum ${name} must have a header and some records.`)
   let properties = dataset[0];
   let records = dataset.slice(1);
-  return getEnum(name, records, properties);
+  return getEnum(name, records, properties, safe);
 }
 /**
  * Create a new immutable Enum object from a two dimensional array. If the array has one column then the keys are the same as the values.
@@ -97,6 +97,6 @@ function getEnumWithHeader(name, dataset) {
  * @param {[string]} properties - the list of keys for a complex enum type to map against columns of the dataset.
  * @return {Enum} An Enum object that encapsulates the data provided
  */
-function getEnum(name, records, properties) {
-  return Object.freeze(new Enum(name, records, properties));
+function getEnum(name, records, properties, safe=true) {
+  return Object.freeze(new Enum(name, records, properties, safe));
 }
